@@ -116,3 +116,25 @@
     		return 1
     	else:
     		return ( n * factorial( n - 1 ) )
+    		
+    		
+#python 生成器
+####生成器是带有yield语句的函数，一个函数或者子程序只返回一次，但一个生成器能暂停执行，并返回一个中间结果。调用next继续执行。
+
+    
+	def counter( start_at = 0 ):
+	count = start_at
+	while True:
+		val = ( yield count ) 
+		if val is not None:
+			count = val
+		else:
+			count += 1
+
+	count = counter(5)
+	print count.next()
+	print count.next()
+
+	count.send( 9 )
+	print count.next()
+	count.close()
